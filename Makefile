@@ -78,11 +78,8 @@ ifneq ($(release),)
 	@github_changelog_generator -u add-ons -p plugin.video.streamz --no-issues --future-release $(release)
 
 	# Next steps to release:
-	# git add .
-	# git commit -m "Prepare for $(release)"
-	# git push
-	# git tag $(release)
-	# git push --tags
+	# git add . && git commit -m "Prepare for $(release)" && git push
+	# git tag $(release) && git push --tags
 else
 	@echo "Usage: make release release=v1.0.0"
 endif

@@ -33,7 +33,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}  # Use GH_TOKEN so we authenticate as ourself to create the release
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
           release_name: ${{ github.ref }}
@@ -44,7 +44,7 @@ jobs:
       - name: Upload Leia zip
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ${{ steps.build.outputs.leia-filename }}
@@ -54,22 +54,22 @@ jobs:
       - name: Upload Matrix zip
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: ${{ steps.build.outputs.matrix-filename }}
           asset_path: ../${{ steps.build.outputs.matrix-filename }}
           asset_content_type: application/zip
 
-#      - name: Generate distribution zip and submit to official kodi repository
-#        id: kodi-addon-submitter
-#        uses: xbmc/action-kodi-addon-submitter@v1.2
-#        with:
-#          kodi-repository: repo-plugins
-#          addon-id: plugin.video.streamz
-#          kodi-version: leia
-#          kodi-matrix: true
-#        env:
-#          GH_USERNAME: ${{secrets.GH_USERNAME}}
-#          GH_TOKEN: ${{secrets.GH_TOKEN}}
-#          EMAIL: ${{secrets.EMAIL}}
+      - name: Generate distribution zip and submit to official kodi repository
+        id: kodi-addon-submitter
+        uses: xbmc/action-kodi-addon-submitter@v1.2
+        with:
+          kodi-repository: repo-plugins
+          addon-id: plugin.video.streamz
+          kodi-version: leia
+          kodi-matrix: true
+        env:
+          GH_USERNAME: ${{secrets.GH_USERNAME}}
+          GH_TOKEN: ${{secrets.GH_TOKEN}}
+          EMAIL: ${{secrets.EMAIL}}
