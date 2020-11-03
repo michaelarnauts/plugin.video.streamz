@@ -71,20 +71,18 @@ build: clean
 
 release:
 ifneq ($(release),)
-# Set version
+	# Set version
 	@echo "cd /addon/@version\nset $$release\nsave\nbye" | xmllint --shell addon.xml > /dev/null
 
-# Update changelog
-#@github_changelog_generator -u add-ons -p plugin.video.streamz --no-issues --future-release $(release)
+	# Update changelog
+	@github_changelog_generator -u add-ons -p plugin.video.streamz --no-issues --future-release $(release)
 
-# Next steps
-	@echo
-	@echo "Next steps: "
-	@echo "git add ."
-	@echo "git commit -m \"Prepare for $(release)\""
-	@echo "git push"
-	@echo "git tag $(release)"
-	@echo "git push --tags"
+	# Next steps to release:
+	# git add .
+	# git commit -m "Prepare for $(release)"
+	# git push
+	# git tag $(release)
+	# git push --tags
 else
 	@echo "Usage: make release release=v1.0.0"
 endif

@@ -1,8 +1,8 @@
 # Changelog
 
-## [v1.0.0](https://github.com/add-ons/plugin.video.streamz/tree/v1.0.0) (2020-11-03)
+## [v1.0.1](https://github.com/add-ons/plugin.video.streamz/tree/v1.0.1) (2020-11-03)
 
-[Full Changelog](https://github.com/add-ons/plugin.video.streamz/compare/v0.0.1...v1.0.0)
+[Full Changelog](https://github.com/add-ons/plugin.video.streamz/compare/v0.0.1...v1.0.1)
 
 **Implemented enhancements:**
 
